@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — Sweet Tooth</title>
+  <meta name="theme-color" content="#F3AEA8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" data-header></header>
+  <main class="page" id="main">
+    <div class="wrap">
+      <p class="eyebrow">Step 2 of 2</p>
+      <h1 class="page-title">Where should we <span class="script">deliver?</span></h1>
+      <p class="muted" style="margin:0 0 2rem;max-width:56ch">Send your order and we'll approve it by hand. You'll pay in cash when it arrives.</p>
+
+      <div data-gate></div>
+
+      <form class="split" data-form hidden novalidate>
+        <div class="panel">
+          <p class="eyebrow">Your details</p>
+          <div class="row-2">
+            <div class="field"><label for="fullname">Full name</label><input class="input" id="fullname" name="fullname" autocomplete="name" required maxlength="80"></div>
+            <div class="field"><label for="phone">Phone</label><input class="input" id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30"><span class="hint">So the driver can call when they're outside.</span></div>
+          </div>
+
+          <p class="eyebrow" style="margin-top:.6rem">Delivery address</p>
+          <div class="field"><label for="line1">Address line 1</label><input class="input" id="line1" name="line1" autocomplete="address-line1" required maxlength="120"></div>
+          <div class="field"><label for="line2">Address line 2 <span class="muted">(optional)</span></label><input class="input" id="line2" name="line2" autocomplete="address-line2" maxlength="120"></div>
+          <div class="row-2">
+            <div class="field"><label for="city">Town / city</label><input class="input" id="city" name="city" autocomplete="address-level2" required maxlength="60"></div>
+            <div class="field"><label for="postcode">Postcode / ZIP</label><input class="input" id="postcode" name="postcode" autocomplete="postal-code" required maxlength="20"></div>
+          </div>
+          <div class="field"><label for="preferred">Preferred delivery time <span class="muted">(optional)</span></label><input class="input" id="preferred" name="preferred" placeholder="e.g. Saturday after 2pm" maxlength="80"></div>
+          <div class="field"><label for="notes">Notes for the baker or driver <span class="muted">(optional)</span></label><textarea class="input" id="notes" name="notes" maxlength="500" placeholder="Allergies, gate codes, a birthday message…"></textarea></div>
+          <label class="check"><input type="checkbox" name="save" checked> Save these details for next time</label>
+        </div>
+
+        <aside class="panel pink">
+          <p class="eyebrow">Your box</p>
+          <div data-summary></div>
+          <p class="eyebrow" style="margin-top:1.4rem">Payment</p>
+          <div class="pay-option"><span class="radio" aria-hidden="true"></span><div><b>Cash on delivery</b><br><span class="small">The only option — pay the driver at the door.</span></div></div>
+          <p class="form-error" data-error role="alert" style="margin-top:1rem"></p>
+          <button class="btn btn-primary btn-block" style="margin-top:1.2rem" data-submit>Send order request</button>
+          <p class="small" style="margin:.8rem 0 0;text-align:center">Nothing is charged now. We'll confirm your order first.</p>
+        </aside>
+      </form>
+    </div>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <script type="module" src="js/checkout.js"></script>
+</body>
+</html>

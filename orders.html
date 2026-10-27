@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My orders — Sweet Tooth</title>
+  <meta name="theme-color" content="#F3AEA8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" data-header></header>
+  <main class="page" id="main">
+    <div class="wrap">
+      <p class="eyebrow">Order tracking</p>
+      <h1 class="page-title">My <span class="script">orders</span></h1>
+      <p class="muted" style="margin:0 0 2rem;max-width:56ch">This page updates by itself as we approve, bake and deliver your cookies.</p>
+      <div data-placed></div>
+      <div class="orders-list" data-orders aria-live="polite"></div>
+    </div>
+  </main>
+  <footer class="site-footer" data-footer></footer>
+  <script type="module" src="js/orders.js"></script>
+</body>
+</html>

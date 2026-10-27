@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sweet Tooth — Small-batch cookies, delivered</title>
+  <meta name="description" content="Sweet Tooth bakes small-batch cookies to order and delivers them to your door. Cash on delivery.">
+  <meta name="theme-color" content="#F3AEA8">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='%23D4A266' stroke='%233A1E17' stroke-width='5'/%3E%3Ccircle cx='36' cy='38' r='7' fill='%233A1E17'/%3E%3Ccircle cx='62' cy='46' r='6' fill='%233A1E17'/%3E%3Ccircle cx='44' cy='66' r='6' fill='%233A1E17'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header" data-header></header>
+
+  <main id="main">
+    <!-- Hero: the "miracles" definition card -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="stars" data-stars aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div>
+          <h1 id="hero-title" class="hero-word">sweet tooth</h1>
+          <p class="definition">
+            <em>/noun/</em>
+            The quiet craving that appears right after dinner &mdash; and the warm box of cookies that answers it.
+          </p>
+          <div class="hero-cta">
+            <a href="#menu" class="btn btn-primary">See the menu</a>
+            <a href="orders.html" class="btn btn-ghost">Track my order</a>
+          </div>
+        </div>
+        <div class="hero-plate" data-hero-plate>
+          <div class="tile"></div>
+          <div class="hero-stamp"><span><b>Baked</b>to order<br>cash on<br>delivery</span></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track" data-marquee></div>
+    </div>
+
+    <!-- Menu -->
+    <section class="section" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">The menu &middot; this week</p>
+            <h2 id="menu-title" class="section-title">Fresh from the <span class="script">oven</span></h2>
+          </div>
+          <p class="lede">Each cookie is baked the day it's delivered. Fill a box, tell us where to bring it, and pay in cash at the door.</p>
+        </div>
+        <div class="menu-grid" data-menu>
+          <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section how" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">How ordering works</p>
+            <h2 id="how-title" class="section-title">From our oven <span class="script">to your door</span></h2>
+          </div>
+          <p class="lede">We approve every order by hand so nothing goes out stale. You can follow each step from your account.</p>
+        </div>
+        <ol class="steps">
+          <li class="step"><span class="step-num">01</span><h3>Requested</h3><p>Fill your box, add your address and send the order.</p></li>
+          <li class="step"><span class="step-num">02</span><h3>Confirmed</h3><p>We check the oven schedule and approve your order.</p></li>
+          <li class="step"><span class="step-num">03</span><h3>Baking</h3><p>Your cookies are mixed, scooped and baked fresh.</p></li>
+          <li class="step"><span class="step-num">04</span><h3>Delivered</h3><p>Still warm at your door. Pay the driver in cash.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Story poster -->
+    <section class="story" aria-labelledby="story-title">
+      <div class="wrap story-inner">
+        <p class="monogram"><small>20</small>ST<small>26</small></p>
+        <h2 id="story-title" class="story-title">Small batch<br>big crumbs</h2>
+        <p class="story-sub">Butter, sugar &amp; good intentions</p>
+        <p class="story-loc"><span>Baked</span> <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0l2 10 10 2-10 2-2 10-2-10-10-2 10-2z" fill="currentColor"/></svg> <span>Delivered</span></p>
+        <p class="copy">Sweet Tooth started as a kitchen-table habit: one tray on Friday nights for friends who kept asking for more. We still bake the same way &mdash; real butter, slow-browned, rested dough &mdash; just a few more trays at a time.</p>
+      </div>
+    </section>
+
+    <!-- Flavour swatches -->
+    <section class="section" aria-labelledby="swatch-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">The flavour library</p>
+            <h2 id="swatch-title" class="section-title">Our <span class="script">palette</span></h2>
+          </div>
+          <p class="lede">Every batch starts with a colour on the wall and a flavour in mind.</p>
+        </div>
+        <div class="swatches">
+          <div class="swatch" style="background:#F3AEA8"><span class="dot" style="background:#E4826A"></span><p><b>Strawberry</b>#F3AEA8</p></div>
+          <div class="swatch" style="background:#B6C4A3"><span class="dot" style="background:#8D9D6E"></span><p><b>Matcha</b>#B6C4A3</p></div>
+          <div class="swatch" style="background:#E2B549"><span class="dot" style="background:#9E6B50"></span><p><b>Honeycomb</b>#E2B549</p></div>
+          <div class="swatch" style="background:#E4826A"><span class="dot" style="background:#B6C4A3"></span><p><b>Blood orange</b>#E4826A</p></div>
+          <div class="swatch" style="background:#9E6B50;color:#FBF3E8"><span class="dot" style="background:#E2B549"></span><p><b>Brown butter</b>#9E6B50</p></div>
+          <div class="swatch" style="background:#8D9D6E;color:#FBF3E8"><span class="dot" style="background:#F3AEA8"></span><p><b>Pistachio</b>#8D9D6E</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Good to know -->
+    <section class="section" style="padding-top:0" aria-labelledby="info-title">
+      <div class="wrap">
+        <h2 id="info-title" class="visually-hidden">Good to know</h2>
+        <div class="info-grid">
+          <div class="info pink"><p class="eyebrow">Payment</p><h3>Cash only</h3><p>Pay the driver when your box arrives. Please have the exact amount if you can.</p></div>
+          <div class="info mustard"><p class="eyebrow">Delivery</p><h3 data-fee>Delivered to you</h3><p data-area>We deliver locally.</p></div>
+          <div class="info"><p class="eyebrow">Approval</p><h3>Hand-checked orders</h3><p>Every order is reviewed before baking. You'll see the status change in <a href="orders.html">My orders</a>.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-footer></footer>
+  <script type="module" src="js/home.js"></script>
+</body>
+</html>

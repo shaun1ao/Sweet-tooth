@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin — Sweet Tooth</title>
+  <meta name="theme-color" content="#3A1E17">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=DM+Mono:wght@400;500&family=Jost:wght@400;500;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="admin-body">
+
+  <!-- Login -->
+  <section class="login-wrap" data-login hidden>
+    <div class="login-card panel">
+      <span class="brand-script" style="color:var(--red)">Sweet Tooth</span>
+      <p class="eyebrow" style="text-align:center;margin-bottom:1.6rem">Bakery admin</p>
+      <form data-login-form novalidate>
+        <div class="field"><label for="a-user">Username</label><input class="input" id="a-user" name="username" autocomplete="username" required autocapitalize="characters"></div>
+        <div class="field"><label for="a-pass">Password</label><input class="input" id="a-pass" name="password" type="password" autocomplete="current-password" required></div>
+        <p class="form-error" data-login-error role="alert"></p>
+        <button class="btn btn-primary btn-block" data-login-btn>Sign in</button>
+      </form>
+      <p class="small muted" style="text-align:center;margin:1.2rem 0 0"><a href="index.html">&larr; Back to the shop</a></p>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <div data-dash hidden>
+    <header class="admin-top">
+      <nav class="nav wrap" aria-label="Admin">
+        <a class="brand" href="index.html"><span class="brand-script">Sweet Tooth</span><span class="brand-sub">admin panel</span></a>
+        <span class="mono small" data-who></span>
+        <button class="btn btn-pink btn-sm" data-logout>Log out</button>
+      </nav>
+    </header>
+    <main class="page wrap" style="padding-top:2rem">
+      <div class="tabs" role="tablist" aria-label="Admin sections">
+        <button class="tab" role="tab" aria-selected="true" data-tab="orders">Orders <span data-pending-count></span></button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="menu">Menu</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="money">Money</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="settings">Store settings</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="account">Admin login</button>
+      </div>
+
+      <!-- Orders -->
+      <section data-panel="orders">
+        <div class="stats" data-stats></div>
+        <div class="filters" data-filters role="group" aria-label="Filter orders"></div>
+        <div class="orders-list" data-admin-orders></div>
+      </section>
+
+      <!-- Menu -->
+      <section data-panel="menu" hidden>
+        <div class="section-head" style="margin-bottom:1.2rem">
+          <div>
+            <h2 class="page-title" style="font-size:2.4rem">Cookie <span class="script">menu</span></h2>
+            <p class="muted" style="margin:0">Add as many cookies as you like. Changes appear on the shop instantly.</p>
+          </div>
+          <button class="btn btn-primary" data-new-cookie>+ Add a cookie</button>
+        </div>
+        <div class="menu-admin" data-menu-list></div>
+      </section>
+
+      <!-- Money (private) -->
+      <section data-panel="money" hidden>
+        <div class="section-head" style="margin-bottom:1.2rem">
+          <div>
+            <h2 class="page-title" style="font-size:2.4rem">Money <span class="script">matters</span></h2>
+            <p class="muted" style="margin:0">Private to the admin panel. Customers never see costs or profit.</p>
+          </div>
+          <div class="filters" data-period role="group" aria-label="Time period" style="margin:0"></div>
+        </div>
+        <div class="stats" data-money-stats></div>
+        <div data-money-warn></div>
+        <div class="split" style="margin-top:1.5rem">
+          <div class="panel" style="background:var(--cream)">
+            <p class="eyebrow">By cookie</p>
+            <div style="overflow-x:auto"><table class="fin-table" data-by-cookie></table></div>
+            <p class="eyebrow" style="margin-top:1.8rem">Recent deliveries</p>
+            <div style="overflow-x:auto"><table class="fin-table" data-by-order></table></div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow">Other expenses</p>
+            <p class="small muted" style="margin:0 0 1rem">Packaging, fuel, equipment — anything that isn't already in a cookie's cost.</p>
+            <form data-expense-form novalidate>
+              <div class="field"><label for="x-label">What for</label><input class="input" id="x-label" name="label" maxlength="80" placeholder="Boxes and ribbon"></div>
+              <div class="row-2">
+                <div class="field"><label for="x-amt">Amount</label><input class="input" id="x-amt" name="amount" type="number" step="0.01" min="0"></div>
+                <div class="field"><label for="x-date">Date</label><input class="input" id="x-date" name="date" type="date"></div>
+              </div>
+              <button class="btn btn-primary btn-sm" data-add-expense>Add expense</button>
+            </form>
+            <div data-expense-list style="margin-top:1.2rem"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section data-panel="settings" hidden>
+        <form class="panel" data-settings style="max-width:720px" novalidate>
+          <h2 class="page-title" style="font-size:2.2rem">Store <span class="script">settings</span></h2>
+          <div class="toggle-row" style="margin-bottom:1rem">
+            <div><b>Accepting orders</b><br><span class="small muted">Turn off to pause new orders (e.g. on holiday).</span></div>
+            <label class="switch"><input type="checkbox" name="acceptingOrders" aria-label="Accepting orders"><span></span></label>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="s-cur">Currency symbol</label><input class="input" id="s-cur" name="currency" maxlength="4"></div>
+            <div class="field"><label for="s-fee">Delivery fee</label><input class="input" id="s-fee" name="deliveryFee" type="number" step="0.01" min="0"></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="s-min">Minimum order (before delivery)</label><input class="input" id="s-min" name="minOrder" type="number" step="0.01" min="0"></div>
+            <div class="field"><label for="s-ann">Announcement bar</label><input class="input" id="s-ann" name="announcement" maxlength="120"></div>
+          </div>
+          <div class="field"><label for="s-area">Delivery area</label><input class="input" id="s-area" name="deliveryArea" maxlength="160"></div>
+          <button class="btn btn-primary" data-save-settings>Save settings</button>
+        </form>
+      </section>
+
+      <!-- Admin credentials -->
+      <section data-panel="account" hidden>
+        <form class="panel" data-creds style="max-width:560px" novalidate>
+          <h2 class="page-title" style="font-size:2.2rem">Admin <span class="script">login</span></h2>
+          <p class="muted" style="margin:0 0 1.4rem">Change the username and password used to open this panel. The password is stored only as a salted PBKDF2 hash. Other devices are signed out when it changes.</p>
+          <div class="field"><label for="c-cur">Current password</label><input class="input" id="c-cur" name="current" type="password" autocomplete="current-password" required></div>
+          <div class="field"><label for="c-user">New username</label><input class="input" id="c-user" name="username" autocomplete="username" required minlength="3" maxlength="40"></div>
+          <div class="row-2">
+            <div class="field"><label for="c-pass">New password</label><input class="input" id="c-pass" name="password" type="password" autocomplete="new-password" required minlength="4"></div>
+            <div class="field"><label for="c-pass2">Repeat new password</label><input class="input" id="c-pass2" name="password2" type="password" autocomplete="new-password" required></div>
+          </div>
+          <p class="form-error" data-creds-error role="alert"></p>
+          <button class="btn btn-primary" data-save-creds>Update admin login</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <!-- Cookie editor -->
+  <dialog class="modal" data-editor aria-labelledby="ed-title">
+    <form method="dialog" data-editor-form novalidate>
+      <div class="modal-head"><h2 id="ed-title" data-ed-title>Add a cookie</h2><button class="icon-btn" value="cancel" formnovalidate aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
+      <div class="modal-body editor-grid">
+        <div>
+          <div class="row-2">
+            <div class="field"><label for="e-name">Name</label><input class="input" id="e-name" name="cname" required maxlength="60"></div>
+            <div class="field"><label for="e-price">Price</label><input class="input" id="e-price" name="price" type="number" step="0.01" min="0" required></div>
+          </div>
+          <div class="field"><label for="e-desc">Description</label><textarea class="input" id="e-desc" name="description" maxlength="240"></textarea></div>
+          <div class="cost-box">
+            <p class="eyebrow" style="margin:0 0 .2rem">Cost to make <span class="lock">Private · admin only</span></p>
+            <p class="small muted" style="margin:0 0 .8rem">What it costs you to bake a batch, and how many cookies that batch makes.</p>
+            <div class="row-2">
+              <div class="field"><label for="e-bcost">Batch cost</label><input class="input" id="e-bcost" name="batchCost" type="number" step="0.01" min="0" placeholder="e.g. 6.00"></div>
+              <div class="field"><label for="e-bqty">Cookies per batch</label><input class="input" id="e-bqty" name="batchQty" type="number" step="1" min="1" placeholder="e.g. 12"></div>
+            </div>
+            <p class="small" data-margin style="margin:0"></p>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="e-style">Cookie artwork</label><select class="input" id="e-style" name="cstyle" data-style-select></select></div>
+            <div class="field"><label for="e-plate">Plate</label><select class="input" id="e-plate" name="plate" data-plate-select></select></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="e-tile">Tile colour</label><select class="input" id="e-tile" name="tile" data-tile-select></select></div>
+            <div class="field"><label for="e-tag">Badge <span class="muted">(optional)</span></label><input class="input" id="e-tag" name="tag" maxlength="20" placeholder="New, Bestseller…"></div>
+          </div>
+          <div class="row-2">
+            <div class="field"><label for="e-sort">Menu position</label><input class="input" id="e-sort" name="sort" type="number" step="1"></div>
+            <div class="field"><label for="e-img">Photo URL <span class="muted">(optional)</span></label><input class="input" id="e-img" name="imageUrl" type="url" placeholder="https://…"><span class="hint">Leave blank to use the illustration.</span></div>
+          </div>
+          <div class="toggle-row"><div><b>In stock</b><br><span class="small muted">Off shows “Sold out today”.</span></div><label class="switch"><input type="checkbox" name="available" aria-label="In stock"><span></span></label></div>
+          <div class="toggle-row"><div><b>Hidden from shop</b><br><span class="small muted">Keep it saved but off the menu.</span></div><label class="switch"><input type="checkbox" name="chidden" aria-label="Hidden from shop"><span></span></label></div>
+          <p class="form-error" data-ed-error role="alert" style="margin-top:1rem"></p>
+          <div class="admin-actions" style="margin-top:1rem">
+            <button class="btn btn-primary" value="save" data-ed-save>Save cookie</button>
+            <button class="btn btn-ghost" value="cancel" formnovalidate>Cancel</button>
+          </div>
+        </div>
+        <div><p class="eyebrow">Preview</p><div class="preview-tile" data-preview></div></div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Small text prompt (decline reason, notes) -->
+  <dialog class="modal" data-ask style="width:min(480px,calc(100% - 32px))">
+    <form method="dialog">
+      <div class="modal-head"><h2 data-ask-title>Note</h2></div>
+      <div class="modal-body">
+        <div class="field"><label for="ask-input" data-ask-label>Note</label><textarea class="input" id="ask-input" data-ask-input maxlength="300"></textarea></div>
+        <div class="admin-actions"><button class="btn btn-primary" value="ok" data-ask-ok>Save</button><button class="btn btn-ghost" value="cancel">Cancel</button></div>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
