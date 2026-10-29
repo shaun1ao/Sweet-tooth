@@ -5,22 +5,22 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase
 
 export const DEFAULT_SETTINGS = {
   storeName: "Sweet Tooth",
-  currency: "£",
-  deliveryFee: 2.5,
-  minOrder: 8,
+  currency: "AED",
+  deliveryFee: 10,
+  minOrder: 30,
   acceptingOrders: true,
   deliveryArea: "We deliver within 5 miles of the bakery.",
-  announcement: "Fresh batches every Friday & Saturday",
+  announcement: "Fresh batches every Monday",
 };
 
 // Shown before Firebase is connected, so the site can be previewed.
 export const DEMO_COOKIES = [
-  { id: "d1", name: "Brown Butter Chip", description: "Nutty brown butter, dark chocolate chunks, flaky salt.", price: 3.5, style: "chocchip", plate: "garland", tile: "brown", tag: "Bestseller", available: true, sort: 1 },
-  { id: "d2", name: "Raspberry Thumbprint", description: "Buttery shortbread cradling a spoon of raspberry jam.", price: 3.0, style: "jam", plate: "floral", tile: "cream", tag: "", available: true, sort: 2 },
-  { id: "d3", name: "Matcha White Choc", description: "Ceremonial matcha dough studded with white chocolate.", price: 3.75, style: "matcha", plate: "gold", tile: "olive", tag: "New", available: true, sort: 3 },
-  { id: "d4", name: "Birthday Sprinkle", description: "Vanilla sugar cookie, pink glaze, a riot of sprinkles.", price: 3.25, style: "sprinkle", plate: "blush", tile: "pink", tag: "", available: true, sort: 4 },
-  { id: "d5", name: "Midnight Double", description: "Cocoa dough, white chips, a molten fudgy middle.", price: 3.75, style: "double", plate: "mint", tile: "mustard", tag: "", available: true, sort: 5 },
-  { id: "d6", name: "Red Velvet Crush", description: "Tangy red velvet with cream-cheese white chocolate.", price: 3.5, style: "redvelvet", plate: "sky", tile: "red", tag: "", available: true, sort: 6 },
+  { id: "d1", name: "Brown Butter Chip", description: "Nutty brown butter, dark chocolate chunks, flaky salt.", price: 14, style: "chocchip", plate: "garland", tile: "brown", tag: "Bestseller", available: true, sort: 1 },
+  { id: "d2", name: "Raspberry Thumbprint", description: "Buttery shortbread cradling a spoon of raspberry jam.", price: 12, style: "jam", plate: "floral", tile: "cream", tag: "", available: true, sort: 2 },
+  { id: "d3", name: "Matcha White Choc", description: "Ceremonial matcha dough studded with white chocolate.", price: 15, style: "matcha", plate: "gold", tile: "olive", tag: "New", available: true, sort: 3 },
+  { id: "d4", name: "Birthday Sprinkle", description: "Vanilla sugar cookie, pink glaze, a riot of sprinkles.", price: 13, style: "sprinkle", plate: "blush", tile: "pink", tag: "", available: true, sort: 4 },
+  { id: "d5", name: "Midnight Double", description: "Cocoa dough, white chips, a molten fudgy middle.", price: 15, style: "double", plate: "mint", tile: "mustard", tag: "", available: true, sort: 5 },
+  { id: "d6", name: "Red Velvet Crush", description: "Tangy red velvet with cream-cheese white chocolate.", price: 14, style: "redvelvet", plate: "sky", tile: "red", tag: "", available: true, sort: 6 },
 ];
 
 export const STATUS_FLOW = ["requested", "confirmed", "baking", "out_for_delivery", "delivered"];
@@ -54,7 +54,9 @@ export async function loadSettings() {
 }
 
 export function money(n, currency = settingsCache?.currency ?? DEFAULT_SETTINGS.currency) {
-  return `${currency}${Number(n || 0).toFixed(2)}`;
+  // Letter codes like "AED" get a space: "AED 14.00". Symbols stay tight: "£14.00".
+  const sep = /[A-Za-z]$/.test(currency) ? " " : "";
+  return `${currency}${sep}${Number(n || 0).toFixed(2)}`;
 }
 
 export function esc(s) {

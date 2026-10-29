@@ -35,7 +35,7 @@ function render(orders) {
   }
   list.innerHTML = orders
     .map((o) => {
-      const cur = o.currency || "£";
+      const cur = o.currency || "AED";
       const addr = [o.address?.line1, o.address?.line2, o.address?.city, o.address?.postcode].filter(Boolean).map(esc).join(", ");
       return `
       <article class="order" ${o.id === placed ? 'style="box-shadow:6px 6px 0 var(--cocoa)"' : ""}>

@@ -34,6 +34,8 @@ function render(settings) {
     menuEl.innerHTML = `<div class="card" style="grid-column:1/-1"><div class="empty"><p class="display-italic">The menu is being written.</p><p class="small">Check back soon — fresh flavours are on the way.</p></div></div>`;
     return;
   }
+  // Size the grid to the number of cookies so there are no empty dark cells.
+  menuEl.dataset.n = Math.min(visible.length, 3);
   menuEl.innerHTML = visible
     .map((c) => {
       const sold = c.available === false;
@@ -82,8 +84,6 @@ menuEl.addEventListener("click", (e) => {
 const sortMenu = (list) => list.sort((a, b) => (a.sort ?? 999) - (b.sort ?? 999) || a.name.localeCompare(b.name));
 
 loadSettings().then((settings) => {
-  document.querySelector("[data-fee]").textContent = `${money(settings.deliveryFee, settings.currency)} delivery`;
-  document.querySelector("[data-area]").textContent = `${settings.deliveryArea} Minimum order ${money(settings.minOrder, settings.currency)}.`;
 
   if (!isConfigured) {
     menu = sortMenu([...DEMO_COOKIES]);

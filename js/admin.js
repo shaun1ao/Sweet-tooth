@@ -304,7 +304,7 @@ $("[data-admin-orders]").addEventListener("click", async (e) => {
         await setStatus(o.id, b.dataset.to);
         break;
       case "window": {
-        const win = await ask({ title: "Delivery time", label: "e.g. Saturday 2–4pm", value: o.deliveryWindow || "" });
+        const win = await ask({ title: "Delivery time", label: "e.g. Monday 2–4pm", value: o.deliveryWindow || "" });
         if (win === null) break;
         await updateDoc(doc(db, "orders", o.id), { deliveryWindow: win, updatedAt: serverTimestamp() });
         toast("Delivery time saved");
@@ -573,7 +573,7 @@ sf.addEventListener("submit", async (e) => {
   try {
     const data = {
       acceptingOrders: sf.acceptingOrders.checked,
-      currency: sf.currency.value.trim() || "£",
+      currency: sf.currency.value.trim() || "AED",
       deliveryFee: Math.max(0, Number(sf.deliveryFee.value) || 0),
       minOrder: Math.max(0, Number(sf.minOrder.value) || 0),
       announcement: sf.announcement.value.trim(),
