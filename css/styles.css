@@ -241,10 +241,13 @@ h1, h2, h3 { margin: 0; }
 .lede { max-width: 46ch; margin: 0; color: var(--ink-muted); }
 
 /* ---------- Menu grid (inspired by the pastry tile photo) ---------- */
-.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1.5px solid var(--cocoa); border-radius: 6px; overflow: hidden; background: var(--cocoa); gap: 1.5px; }
-@media (max-width: 960px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .menu-grid { grid-template-columns: 1fr; } }
-.card { position: relative; display: flex; flex-direction: column; background: var(--tile, var(--paper)); }
+/* Each card draws its own outline, so a part-filled last row leaves no empty dark cells. */
+.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; padding: 1.5px; justify-content: center; }
+.menu-grid[data-n="1"] { grid-template-columns: minmax(0, 420px); }
+.menu-grid[data-n="2"] { grid-template-columns: repeat(2, minmax(0, 420px)); }
+@media (max-width: 960px) { .menu-grid[data-n="3"], .menu-grid:not([data-n]) { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .menu-grid, .menu-grid[data-n] { grid-template-columns: 1fr; } }
+.card { position: relative; display: flex; flex-direction: column; background: var(--tile, var(--paper)); box-shadow: 0 0 0 1.5px var(--cocoa); }
 .card-art { padding: 9% 14% 4%; position: relative; }
 .card-art .cookie-art { transition: transform 0.5s cubic-bezier(.2,.8,.2,1); filter: drop-shadow(0 10px 14px rgba(40,18,10,.18)); }
 .card:hover .card-art .cookie-art { transform: rotate(-10deg); }
@@ -300,7 +303,8 @@ h1, h2, h3 { margin: 0; }
 
 /* ---------- Info / FAQ ---------- */
 .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-@media (max-width: 860px) { .info-grid { grid-template-columns: 1fr; } }
+.info-grid.two { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 860px) { .info-grid, .info-grid.two { grid-template-columns: 1fr; } }
 .info { border: 1.5px solid var(--cocoa); border-radius: 8px; padding: 1.6rem; background: var(--paper); }
 .info h3 { font-family: var(--f-display); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.4rem; }
 .info p { margin: 0; color: var(--ink-muted); }
@@ -495,3 +499,10 @@ dialog.modal::backdrop { background: rgba(58, 30, 23, 0.45); }
 .stat small { display: block; font-family: var(--f-mono); font-size: .75rem; margin-top: .3rem; opacity: .85; }
 .expense { display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .55rem 0; border-bottom: 1px dashed var(--line); }
 .expense p { margin: 0; }
+
+/* Line up the art and text panels across a row, even when a name wraps. */
+@supports (grid-template-rows: subgrid) {
+  .menu-grid { row-gap: 1.5px; }
+  .card { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
+  .card-body { margin-top: 0; align-content: start; }
+}
